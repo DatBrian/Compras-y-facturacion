@@ -1,0 +1,44 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Laptop",
+            "price": 3000000,
+            "description": "HP Laptop",
+            "categoryId": 1
+        },
+        {
+            "id": 2,
+            "name": "Monitor",
+            "price": 500000,
+            "description": "Monitor LCD LG",
+            "categoryId": 1
+        },
+        {
+            "id": 3,
+            "name": "Mouse",
+            "price": 150000,
+            "description": "Razer Gaming Mouse",
+            "categoryId": 2
+        },
+        {
+            "id" : 4,
+            "name" : "Keyboard",
+            "price" : 250000,
+            "description" : "gaming mechanical keyboard",
+            "categoryId" : 2
+        }
+    ],
+    "categories": [
+        {
+            "id": 1,
+            "name": "computers",
+            "description": "computers, laptops, monitors, etc"
+        },
+        {
+            "id": 2,
+            "name": "gaming",
+            "description": "mouses, monitors, keyboardas, etc"
+        }
+    ]
+}
