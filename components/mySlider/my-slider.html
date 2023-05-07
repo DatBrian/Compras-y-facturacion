@@ -1,0 +1,46 @@
+<section class="slider-frame">
+    <ul>
+        <li><img src="../../resources/images/slide-img1.jpg" alt=""></li>
+        <li><img src="../../resources/images/slide-img2.jpg" alt=""></li>
+        <li><img src="../../resources/images/slide-img3.jpg" alt=""></li>
+    </ul>
+</section>
+
+<style>
+    .slider-frame {
+        overflow: hidden;
+        padding: 0;
+        animation: slide 15s infinite alternate ease-in-out;
+    }
+
+    ul {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        width: 300%;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    img {
+        height: 100vh;
+        width: 100rem;
+    }
+
+    @keyframes slide {
+        0% {
+            margin-left: 0%;
+        }
+
+        65% {
+            margin-left: -110%;
+        }
+
+
+        100% {
+            margin-left: -215%;
+        }
+    }
+</style>
