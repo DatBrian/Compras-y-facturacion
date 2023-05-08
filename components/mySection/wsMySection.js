@@ -1,17 +1,14 @@
 const urlEndPoint = "http://localhost:3000";
 
-/* Method get (Get users) */
-const getProducts = async (product) => {
+const getProducts = async () => {
     try {
         const response = await fetch(`${urlEndPoint}/products`, {
             method: 'GET',
-            body: JSON.stringify(product),
             headers: {
                 'Content-Type': 'application/json'
             },
         });
-        const products = await response.json()
-        createCards(products);
+        const products = await response.json();
         return products;
     }
     catch (err) {
@@ -19,9 +16,9 @@ const getProducts = async (product) => {
     }
 }
 
-
-const createCards = async (products) => {
+const createCards = async () => {
     try {
+        const products = await getProducts();
         products.forEach(product => {
             let plantilla = `
                 <div class= "card">
@@ -34,7 +31,7 @@ const createCards = async (products) => {
                         <h4>Description: ${product.description}</h4>
                     </div>
                     <div class="buttons">
-                        <button>
+                        <button class="carButton">
                             <img src="resources/images/anadir-a-la-cesta.png" alt="">
                         </button>
                         <button>
@@ -42,7 +39,7 @@ const createCards = async (products) => {
                         </button>
                     </div>
                 </div>
-            `
+            `;
             self.postMessage({ message: "plantilla", data: plantilla });
         });
     } catch (error) {
@@ -50,9 +47,9 @@ const createCards = async (products) => {
     }
 }
 
-self.addEventListener("message", (e) => {
+self.addEventListener("message", async (e) => {
     let { message } = e.data;
     if (message === "api") {
-        getProducts();
+        await createCards();
     }
 })

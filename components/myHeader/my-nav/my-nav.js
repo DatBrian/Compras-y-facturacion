@@ -8,10 +8,23 @@ export default class myNav extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: "open" });
+        console.log("Nav funcionando");
+        this.addEventListener("prueba", this.handleEvent.bind(this));
+    }
+
+    handleEvent(e) {
+        (e.type === "prueba") ? this.prueba()
+            : undefined;
+    }
+
+    prueba() {
+        console.log("SIIIIIIIIIII SIRVIOOOOOOOOOOOOOOO");
+    }
+
+    connectedCallback() {
         Promise.resolve(myNav.components()).then(html => {
             this.shadowRoot.innerHTML = html;
         });
-        console.log("Nav funcionando");
     }
 }
 

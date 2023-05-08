@@ -12,6 +12,21 @@ export default class mySection extends HTMLElement {
         console.log("Section funcionando");
     }
 
+    handleEvent(e) {
+        (e.type === "click") ? this.prueba()
+            : undefined;
+    }
+
+    prueba(e) {
+        console.log("click  ")
+        const addToCartEvent = new CustomEvent("prueba", {
+            detail: "hola",
+            bubbles: true,
+            composed: true
+        });
+        this.dispatchEvent(addToCartEvent);
+    }
+
     async loadData() {
         try {
 
@@ -21,6 +36,11 @@ export default class mySection extends HTMLElement {
                 let { message, data } = e.data;
                 if (message === "plantilla") {
                     this.shadowRoot.querySelector(".container").insertAdjacentHTML("beforeend", e.data.data)
+                    this.carButton = this.shadowRoot.querySelectorAll(".carButton");
+                    console.log(this.carButton);
+                    this.carButton.forEach(button => {
+                        button.addEventListener("click", this.handleEvent.bind(this));
+                    })
                 }
             }
         } catch (error) {
